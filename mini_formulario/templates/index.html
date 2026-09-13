@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Registro de usuario{% endblock %}
+{% block content %}
+
+    {% if nombre %}
+        <p>Último usuario registrado: {{ nombre }}</p>
+    {% endif %}
+
+    <form method="POST">
+
+        {{ form.hidden_tag() }}
+
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name() }}
+        </p>
+
+        {% for error in form.name.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email() }}
+        </p>
+
+        {% for error in form.email.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+        <p>{{ form.submit() }}</p>
+
+    </form>
+
+{% endblock %}

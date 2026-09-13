@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+{% block title%}Contacto{% endblock %}
+{% block content %}
+    <h2>Contacta con nosotros</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>{{ form.name.label }}<br>{{ form.name(size=32) }}</p>
+        <p>{{ form.email.label }}<br>{{ form.email(size=32) }}</p>
+        <p>{{ form.message.label }}<br>{{ form.message(rows=4, cols=32) }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
+     

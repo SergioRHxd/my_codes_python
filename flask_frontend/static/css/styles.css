@@ -1,0 +1,218 @@
+:root {
+    --ink: #173042;
+    --muted: #5f7480;
+    --petroleum: #12606a;
+    --petroleum-dark: #0d4650;
+    --coral: #e87961;
+    --paper: #fffdf9;
+    --surface: #ffffff;
+    --line: #dbe6e5;
+    --shadow: 0 18px 45px rgba(23, 48, 66, 0.11);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at 90% 0%, rgba(232, 121, 97, 0.2), transparent 24rem),
+        linear-gradient(135deg, #f2f8f6 0%, var(--paper) 58%, #f8f1e8 100%);
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    line-height: 1.6;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 4.5rem;
+    padding: 0.8rem max(1.25rem, calc((100% - 72rem) / 2));
+    color: #fff;
+    background: var(--petroleum-dark);
+    box-shadow: 0 4px 18px rgba(13, 70, 80, 0.18);
+}
+
+nav::before {
+    content: "Flask";
+    margin-right: auto;
+    color: #f9c7b9;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+nav a {
+    padding: 0.55rem 0.9rem;
+    border-radius: 0.45rem;
+    color: #e7f6f4;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.13);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+main {
+    width: min(100% - 2rem, 72rem);
+    min-height: calc(100vh - 9rem);
+    margin: 0 auto;
+    padding: clamp(3rem, 8vw, 6.5rem) clamp(1rem, 5vw, 4rem);
+}
+
+main > h1,
+main > h2,
+main > p,
+main > form,
+main > .flashes {
+    max-width: 44rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h1,
+h2 {
+    margin-top: 0;
+    color: var(--petroleum-dark);
+    line-height: 1.15;
+}
+
+h1 {
+    max-width: 12ch;
+    font-size: clamp(2.4rem, 7vw, 4.8rem);
+    letter-spacing: -0.04em;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+main > p {
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+form {
+    margin-top: 2rem;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    border: 1px solid rgba(219, 230, 229, 0.9);
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: var(--shadow);
+}
+
+form p {
+    margin: 0 0 1.25rem;
+}
+
+form label {
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    color: var(--petroleum-dark);
+    font-weight: 700;
+}
+
+form input:not([type="hidden"]),
+form textarea {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 0.45rem;
+    color: var(--ink);
+    background: #fbfdfc;
+    font: inherit;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+form textarea {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+form input:not([type="hidden"]):focus,
+form textarea:focus {
+    border-color: var(--petroleum);
+    background: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(18, 96, 106, 0.15);
+}
+
+form input[type="submit"] {
+    width: auto;
+    padding: 0.75rem 1.4rem;
+    border: 0;
+    border-radius: 0.45rem;
+    color: #fff;
+    background: var(--coral);
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+form input[type="submit"]:hover,
+form input[type="submit"]:focus-visible {
+    background: #d5634e;
+    outline: none;
+    box-shadow: 0 7px 16px rgba(232, 121, 97, 0.3);
+    transform: translateY(-2px);
+}
+
+.flashes {
+    padding: 0;
+    list-style: none;
+}
+
+.flashes li {
+    margin-bottom: 1.5rem;
+    padding: 0.85rem 1rem;
+    border-left: 4px solid var(--coral);
+    border-radius: 0.35rem;
+    color: var(--petroleum-dark);
+    background: #fff4ee;
+}
+
+footer {
+    padding: 1.5rem 1rem;
+    border-top: 1px solid rgba(219, 230, 229, 0.9);
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (max-width: 560px) {
+    nav {
+        min-height: 4rem;
+    }
+
+    nav::before {
+        font-size: 1rem;
+    }
+
+    nav a {
+        padding: 0.45rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    main {
+        width: min(100% - 1rem, 72rem);
+        padding-top: 3.5rem;
+    }
+
+    h1 {
+        font-size: clamp(2.3rem, 14vw, 3.5rem);
+    }
+}

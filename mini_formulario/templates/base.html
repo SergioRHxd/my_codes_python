@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}Aplicación Flask{% endblock %}
+    </title>
+</head>
+<body>
+
+    <h1>Sistema de registro</h1>
+
+    {% for message in get_flashed_messages() %}
+        <div>{{ message }}</div>
+    {% endfor %}
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
