@@ -1,0 +1,30 @@
+{% extends "maestra.html" %}
+
+{% block titulo %} Agregar juego {% endblock %}
+
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Agregar juego</h3>
+            {# El formulario envía los campos por POST a la ruta que inserta el juego. #}
+            <form action="{{ url_for('guardar_juego') }}" method="post">
+                <div class="field">
+                    <label for="nombre" class="label">Nombre:</label>
+                    <input required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
+                </div>
+                <div class="field">
+                    <label for="descripcion" class="label">Descripción:</label>
+                    <input required type="text" class="input" placeholder="Descripción" name="descripcion" id="descripcion">
+                </div>
+                <div class="field">
+                    <label for="precio" class="label">Precio:</label>
+                    <input required type="number" step="any" class="input" placeholder="Precio" name="precio" id="precio">
+                </div>
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                <a href="{{ url_for('juegos') }}" class="button is-primary mt-2">Volver</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

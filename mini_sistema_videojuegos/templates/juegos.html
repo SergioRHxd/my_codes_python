@@ -1,0 +1,56 @@
+{% extends "maestra.html" %}
+
+{% block titulo %}Juegos{% endblock %}
+
+{% block contenido %}
+<section class="section">
+    <div class="container">
+        <div class="level">
+            <div class="level-left">
+                <h1 class="title">Juegos</h1>
+            </div>
+            <div class="level-right">
+                <a href="{{ url_for('formulario_agregar_juego') }}" class="button is-success">Agregar</a>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="table is-fullwidth is-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {# Cada fila muestra los datos del juego y ofrece acciones sobre su ID. #}
+                    {% for juego in juegos %}
+                    <tr>
+                        <td>{{ juego[1] }}</td>
+                        <td>{{ juego[2] }}</td>
+                        <td>{{ juego[3] }}</td>
+                        <td>
+                            <a href="{{ url_for('editar_juego', id=juego[0]) }}" class="button is-info">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{ url_for('eliminar_juego') }}" method="post">
+                                <input type="hidden" name="id" value="{{ juego[0] }}">
+                                <button type="submit" class="button is-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {# Jinja usa este bloque cuando la consulta no devuelve registros. #}
+                    {% else %}
+                    <tr>
+                        <td colspan="5">No hay juegos registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

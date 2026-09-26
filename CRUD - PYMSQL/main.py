@@ -1,4 +1,7 @@
+# ==============================================================================
+# 0. IMPORTACIÓN DE LIBRERÍAS
 import pymysql
+# ==============================================================================
 
 # ==============================================================================
 # 1. CONFIGURACIÓN DE CREDENCIALES
@@ -8,7 +11,6 @@ DB_HOST = 'localhost'
 DB_USER = 'root'
 DB_PASSWORD = '15054505'
 DB_NAME = 'dbPython'  # <-- Nombre explícito de mi base de datos
-
 
 # ==============================================================================
 # 2. CLASE DE CONEXIÓN Y ADMINISTRACIÓN DE BD
@@ -22,7 +24,7 @@ class ConexionBD:
         self.user = DB_USER
         self.password = DB_PASSWORD
         self.database = DB_NAME  # Asigno la constante 'dbPython'
-        self.conexion = None
+        self.conexion = None # Esta variable almacenará la conexión a la base de datos
 
     def crear_base_datos(self):
         """Elimino la base de datos 'dbPython' si existe y la creo de nuevo."""
@@ -34,7 +36,9 @@ class ConexionBD:
                 user=self.user,
                 password=self.password
             )
-            cursor = temp_conn.cursor()
+            
+            cursor = temp_conn.cursor() # Creo un cursor para ejecutar sentencias SQL en el servidor MySQL
+            
             # Elimino y creo la base de datos 'dbPython' sin que marque error si ya existía
             cursor.execute(f"DROP DATABASE IF EXISTS {self.database}")
             cursor.execute(f"CREATE DATABASE {self.database}")
@@ -72,7 +76,7 @@ class ConexionBD:
 # 3. CLASE MODELO (ENTIDAD DE DATOS)
 # ==============================================================================
 class Usuario:
-    """Represento al usuario como un objeto en mi código Python."""
+    """Represento al usuario como un objeto."""
 
     def __init__(self, idusuario=None, nombres="", apellido_paterno="", apellido_materno="", user="", pwd=""):
         self.idusuario = idusuario

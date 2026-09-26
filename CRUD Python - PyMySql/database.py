@@ -5,6 +5,7 @@ except ImportError:
 
 import config
 
+#Esta línea permite manejar errores de conexión y operaciones
 MySQLError = getattr(pymysql, "MySQLError", getattr(pymysql, "Error", Exception)) 
 
 class ConexionBD:
@@ -15,12 +16,13 @@ class ConexionBD:
         self.user = config.DB_USER
         self.password = config.DB_PASSWORD
         self.database = config.DB_NAME
-        self.conexion = None
+        self.conexion = None #esta variable almacenará la conexión a la base de datos
 
     def conectar(self):
         """Establece la conexión con la base de datos."""
         try:
             print("[SISTEMA] Conectando a la base de datos...")
+            #aquí se realiza la conexión a la base de datos utilizando los parámetros de configuración
             self.conexion = pymysql.connect(
                 host=self.host,
                 user=self.user,
@@ -28,7 +30,7 @@ class ConexionBD:
                 database=self.database
             )
             print("[SISTEMA] Conexión establecida con éxito.")
-            return self.conexion
+            return self.conexion #retorna la conexión para que pueda ser utilizada por otras clases o funciones
         except MySQLError as err:
             print(f"[ERROR CONEXIÓN] {err}")
             return None

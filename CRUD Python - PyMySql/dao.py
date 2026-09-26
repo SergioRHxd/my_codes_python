@@ -14,7 +14,7 @@ class UsuarioDAO:
     def __init__(self, conexion):
         self.conexion = conexion
         
-    #definir los métodos CRUD: crear_tabla, insertar, actualizar, eliminar y listar_por_id. 
+    #Definir los métodos CRUD: crear_tabla, insertar, actualizar, eliminar y listar_por_id. 
     def crear_tabla(self):
         print("\n--> [INICIO] Creando tabla 'usuario1'...")
         try:
@@ -30,20 +30,11 @@ class UsuarioDAO:
                     pwd VARCHAR(10)
                 )"""
             )
-            self.conexion.commit()
+            self.conexion.commit()#Este commit asegura que los cambios se guarden en la base de datos.
             cursor.close()
             print("<-- [ÉXITO] Tabla 'usuario1' creada correctamente.")
         except MySQLError as err:
             print(f"<-- [ERROR] No se pudo crear la tabla: {err}")
-
-    def pedir_datos_usuario(pedir_id=True):
-        idusuario = int(input("Dame id del usuario: ")) if pedir_id else None
-        nombres = input("Dame los nombres del usuario: ")
-        ap = input("Dame el apellido paterno: ")
-        am = input("Dame el apellido materno: ")
-        user = input("Dame el usuario: ")
-        pwd = input("Dame la contraseña: ")
-        return Usuario(idusuario, nombres, ap, am, user, pwd)
 
     def insertar(self, usuario):
         print(f"\n--> [INICIO] Insertando usuario ID: {usuario.idusuario}...")
