@@ -1,0 +1,10 @@
+{# Macro para pintar un campo con sus errores: {% from "_field.html" import render_field %} #}
+{% macro render_field(field) %}
+  <div class="field">
+    {{ field.label }}
+    {{ field(class="input" ~ (" invalid" if field.errors else "")) }}
+    {% for error in field.errors %}
+      <small class="error">{{ error }}</small>
+    {% endfor %}
+  </div>
+{% endmacro %}

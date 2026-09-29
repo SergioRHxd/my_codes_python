@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h1>Bienvenido a Mini Users</h1>
+<p class="lead">Usuarios registrados: <strong>{{ users|length }}</strong></p>
+
+{% if users %}
+  <table class="table">
+    <thead>
+      <tr><th>#</th><th>Usuario</th><th>Correo</th><th>Registro</th></tr>
+    </thead>
+    <tbody>
+      {% for u in users %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>
+          {% if current_user %}
+            <a href="{{ url_for('users.profile', id=u.id) }}">{{ u.username|capitalize }}</a>
+          {% else %}
+            {{ u.username|capitalize }}
+          {% endif %}
+        </td>
+        <td>{{ u.email|default('sin correo', true) }}</td>
+        <td>{{ u.created_at.strftime('%d/%m/%Y') if u.created_at else '—' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p class="empty">Aún no hay usuarios. <a href="{{ url_for('users.register') }}">Crea la primera cuenta</a>.</p>
+{% endif %}
+{% endblock %}

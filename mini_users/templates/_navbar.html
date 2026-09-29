@@ -1,0 +1,13 @@
+<nav class="nav">
+  <a class="brand" href="{{ url_for('users.index') }}">Mini Users</a>
+  <div class="nav-links">
+    <a href="{{ url_for('users.index') }}">Inicio</a>
+    {% if current_user %}
+      <a href="{{ url_for('users.profile', id=current_user.id) }}">Hola, {{ current_user.username|capitalize }}</a>
+      <a href="{{ url_for('users.logout') }}">Cerrar sesión</a>
+    {% else %}
+      <a href="{{ url_for('users.register') }}">Registro</a>
+      <a href="{{ url_for('users.login') }}">Iniciar sesión</a>
+    {% endif %}
+  </div>
+</nav>

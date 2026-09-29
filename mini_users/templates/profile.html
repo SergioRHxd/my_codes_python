@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Perfil de {{ user.username|capitalize }}{% endblock %}
+
+{% block content %}
+<section class="card narrow">
+  <h1>{{ user.username|capitalize }}</h1>
+  <dl class="details">
+    <dt>ID</dt><dd>{{ user.id }}</dd>
+    <dt>Correo</dt><dd>{{ user.email|default('—', true) }}</dd>
+    <dt>Miembro desde</dt>
+    <dd>{{ user.created_at.strftime('%d/%m/%Y %H:%M') if user.created_at else '—' }}</dd>
+  </dl>
+
+  {% if current_user and current_user.id == user.id %}
+  <div class="actions">
+    <a class="btn" href="{{ url_for('users.edit_profile', id=user.id) }}">Editar perfil</a>
+    <form method="POST" action="{{ url_for('users.delete_profile', id=user.id) }}"
+          data-confirm="¿Seguro que quieres eliminar tu cuenta? Esta acción no se puede deshacer.">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="btn btn-danger">Eliminar cuenta</button>
+    </form>
+  </div>
+  {% endif %}
+  <p class="muted"><a href="{{ url_for('users.index') }}">&larr; Volver al listado</a></p>
+</section>
+{% endblock %}

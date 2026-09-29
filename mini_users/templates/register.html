@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% from "_field.html" import render_field %}
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<section class="card narrow">
+  <h1>Crear cuenta</h1>
+  <form method="POST" action="{{ url_for('users.register') }}" novalidate>
+    {{ form.hidden_tag() }}
+    {{ render_field(form.username) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm_password) }}
+    {{ form.submit(class="btn") }}
+  </form>
+  <p class="muted">¿Ya tienes cuenta? <a href="{{ url_for('users.login') }}">Inicia sesión</a></p>
+</section>
+{% endblock %}
