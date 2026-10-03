@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% from "_field.html" import render_field %}
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<section class="card narrow">
+  <h1>Iniciar sesión</h1>
+  <form method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    {{ render_field(form.username) }}
+    {{ render_field(form.password) }}
+    {{ form.submit(class="btn") }}
+  </form>
+  <p class="muted">¿No tienes cuenta? <a href="{{ url_for('users.register') }}">Regístrate</a></p>
+</section>
+{% endblock %}

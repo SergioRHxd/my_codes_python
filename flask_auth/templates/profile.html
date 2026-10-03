@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+<section class="card narrow">
+  <h1>Hola, {{ current_user.username|capitalize }}</h1>
+  <p>Esta es una ruta protegida: solo la ves si iniciaste sesión.</p>
+  <dl class="details">
+    <dt>ID</dt><dd>{{ current_user.id }}</dd>
+    <dt>Miembro desde</dt>
+    <dd>{{ current_user.created_at.strftime('%d/%m/%Y %H:%M') if current_user.created_at else '—' }}</dd>
+  </dl>
+  <div class="actions">
+    <a class="btn" href="{{ url_for('users.edit_profile') }}">Editar perfil</a>
+    <form method="POST" action="{{ url_for('users.delete_profile') }}"
+          data-confirm="¿Seguro que quieres eliminar tu cuenta? Esta acción no se puede deshacer.">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="btn btn-danger">Eliminar cuenta</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

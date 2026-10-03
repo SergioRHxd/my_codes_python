@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "_field.html" import render_field %}
+{% block title %}Editar perfil{% endblock %}
+
+{% block content %}
+<section class="card narrow">
+  <h1>Editar perfil</h1>
+  <form method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    {{ render_field(form.username) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm_password) }}
+    {{ form.submit(class="btn") }}
+    <a class="btn btn-ghost" href="{{ url_for('users.profile') }}">Cancelar</a>
+  </form>
+</section>
+{% endblock %}
