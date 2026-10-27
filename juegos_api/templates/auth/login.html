@@ -1,0 +1,33 @@
+{% extends "maestra.html" %}
+{% block titulo %} Ingresar {% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns is-centered">
+        <div class="column is-5">
+            <h3 class="is-size-3">Ingresar</h3>
+            <form method="post" novalidate>
+                {{ form.hidden_tag() }}
+
+                <div class="field">
+                    {{ form.username.label(class="label") }}
+                    {{ form.username(class="input", placeholder="Usuario", autofocus=true) }}
+                    {% for error in form.username.errors %}<p class="help is-danger">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="field">
+                    {{ form.password.label(class="label") }}
+                    {{ form.password(class="input", placeholder="Contraseña") }}
+                    {% for error in form.password.errors %}<p class="help is-danger">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="field">
+                    <label class="checkbox">{{ form.remember_me() }} {{ form.remember_me.label.text }}</label>
+                </div>
+
+                {{ form.submit(class="button is-success") }}
+                <a href="{{ url_for('auth.register') }}" class="button is-light">Crear cuenta</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

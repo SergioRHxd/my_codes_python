@@ -1,0 +1,35 @@
+{% extends "maestra.html" %}
+{% block titulo %} Registro {% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns is-centered">
+        <div class="column is-5">
+            <h3 class="is-size-3">Crear cuenta</h3>
+            <form method="post" novalidate>
+                {{ form.hidden_tag() }}
+
+                <div class="field">
+                    {{ form.username.label(class="label") }}
+                    {{ form.username(class="input", placeholder="Usuario", autofocus=true) }}
+                    {% for error in form.username.errors %}<p class="help is-danger">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="field">
+                    {{ form.password.label(class="label") }}
+                    {{ form.password(class="input", placeholder="Contraseña") }}
+                    {% for error in form.password.errors %}<p class="help is-danger">{{ error }}</p>{% endfor %}
+                </div>
+
+                <div class="field">
+                    {{ form.password2.label(class="label") }}
+                    {{ form.password2(class="input", placeholder="Repite la contraseña") }}
+                    {% for error in form.password2.errors %}<p class="help is-danger">{{ error }}</p>{% endfor %}
+                </div>
+
+                {{ form.submit(class="button is-success") }}
+                <a href="{{ url_for('auth.login') }}" class="button is-light">Ya tengo cuenta</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

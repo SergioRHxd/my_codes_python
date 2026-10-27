@@ -1,0 +1,66 @@
+# Pruebas de la API /api/juegos
+# Cliente: extensión "REST Client" (VS Code) o HTTP Client (PyCharm/IntelliJ).
+# Ejecutar en orden con la BD vacía (el primer POST crea el id 1).
+# Servidor: python app.py  ->  http://127.0.0.1:5000
+
+@host = http://127.0.0.1:5000
+
+### 1. Listar juegos -> 200 OK
+GET {{host}}/api/juegos
+
+### 2. Crear juego -> 201 Created
+POST {{host}}/api/juegos
+Content-Type: application/json
+
+{"nombre": "Zelda", "descripcion": "Aventura", "precio": 999.99}
+
+### 3. Obtener un juego -> 200 OK
+GET {{host}}/api/juegos/1
+
+### 4. Modificar juego -> 200 OK
+PUT {{host}}/api/juegos/1
+Content-Type: application/json
+
+{"nombre": "Zelda TotK", "descripcion": "Aventura", "precio": 1299.50}
+
+### 5. Eliminar juego -> 204 No Content
+DELETE {{host}}/api/juegos/1
+
+### --- Errores ---
+
+### 6. POST con campos vacíos y precio inválido -> 400 Bad Request
+POST {{host}}/api/juegos
+Content-Type: application/json
+
+{"nombre": "", "precio": "abc"}
+
+### 7. POST con cuerpo que no es JSON -> 400 Bad Request
+POST {{host}}/api/juegos
+Content-Type: application/json
+
+esto no es json
+
+### 8. PUT con precio negativo -> 400 Bad Request
+# (requiere que exista el id 1: ejecutar antes la petición 2)
+PUT {{host}}/api/juegos/1
+Content-Type: application/json
+
+{"nombre": "X", "descripcion": "Y", "precio": -5}
+
+### 9. GET de un id inexistente -> 404 Not Found
+GET {{host}}/api/juegos/999
+
+### 10. PUT de un id inexistente -> 404 Not Found
+PUT {{host}}/api/juegos/999
+Content-Type: application/json
+
+{"nombre": "X", "descripcion": "Y", "precio": 1}
+
+### 11. DELETE de un id inexistente -> 404 Not Found
+DELETE {{host}}/api/juegos/999
+
+### --- Equivalentes con curl ---
+# curl -i http://127.0.0.1:5000/api/juegos
+# curl -i -X POST http://127.0.0.1:5000/api/juegos -H "Content-Type: application/json" -d '{"nombre":"Zelda","descripcion":"Aventura","precio":999.99}'
+# curl -i -X PUT http://127.0.0.1:5000/api/juegos/1 -H "Content-Type: application/json" -d '{"nombre":"Zelda TotK","descripcion":"Aventura","precio":1299.5}'
+# curl -i -X DELETE http://127.0.0.1:5000/api/juegos/1

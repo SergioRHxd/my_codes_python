@@ -1,0 +1,27 @@
+{% extends "maestra.html" %}
+{% block titulo %} Editar Juego {% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Editar Juego</h3>
+            {% if error %}
+            <div class="notification is-danger" role="alert">{{ error }}</div>
+            {% endif %}
+            <form action="{{url_for('editar_juego', id=juego.id)}}" method="post">
+                <label for="nombre">Nombre:</label>
+                <input value="{{ request.form.get('nombre', juego.nombre) }}" required maxlength="255" type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
+                
+                <label for="descripcion">Descripción:</label>
+                <input value="{{ request.form.get('descripcion', juego.descripcion) }}" required maxlength="255" type="text" class="input" placeholder="Descripción" name="descripcion" id="descripcion">
+                
+                <label for="precio">Precio:</label>
+                <input value="{{ request.form.get('precio', juego.precio) }}" required type="number" step="0.01" class="input" placeholder="Precio" name="precio" id="precio">
+                
+                <button type="submit" class="button is-success mt-3">Guardar</button>
+                <a href="{{url_for('juegos')}}" class="button is-primary mt-3">Volver</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
