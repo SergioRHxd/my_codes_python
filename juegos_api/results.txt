@@ -1,0 +1,67 @@
+$ python -m unittest discover -v
+test_actualizar (tests.test_api.ApiJuegosTest.test_actualizar) ... ok
+test_actualizar_inexistente (tests.test_api.ApiJuegosTest.test_actualizar_inexistente) ... ok
+test_actualizar_invalido (tests.test_api.ApiJuegosTest.test_actualizar_invalido) ... ok
+test_crear (tests.test_api.ApiJuegosTest.test_crear) ... ok
+test_crear_campos_invalidos (tests.test_api.ApiJuegosTest.test_crear_campos_invalidos) ... ok
+test_crear_cuerpo_no_json (tests.test_api.ApiJuegosTest.test_crear_cuerpo_no_json) ... ok
+test_crear_errores_por_campo (tests.test_api.ApiJuegosTest.test_crear_errores_por_campo) ... ok
+test_crear_recorta_espacios_y_acepta_precio_texto (tests.test_api.ApiJuegosTest.test_crear_recorta_espacios_y_acepta_precio_texto) ... ok
+test_eliminar (tests.test_api.ApiJuegosTest.test_eliminar) ... ok
+test_eliminar_inexistente (tests.test_api.ApiJuegosTest.test_eliminar_inexistente) ... ok
+test_flujo_crud_completo (tests.test_api.ApiJuegosTest.test_flujo_crud_completo) ... ok
+test_id_no_entero_404 (tests.test_api.ApiJuegosTest.test_id_no_entero_404) ... ok
+test_listar_con_datos (tests.test_api.ApiJuegosTest.test_listar_con_datos) ... ok
+test_listar_vacio (tests.test_api.ApiJuegosTest.test_listar_vacio) ... ok
+test_metodo_no_permitido (tests.test_api.ApiJuegosTest.test_metodo_no_permitido) ... ok
+test_obtener (tests.test_api.ApiJuegosTest.test_obtener) ... ok
+test_obtener_inexistente (tests.test_api.ApiJuegosTest.test_obtener_inexistente) ... ok
+test_actualizar_inexistente (tests.test_models.JuegoModelTest.test_actualizar_inexistente) ... ok
+test_actualizar_juego (tests.test_models.JuegoModelTest.test_actualizar_juego) ... ok
+test_campos_obligatorios (tests.test_models.JuegoModelTest.test_campos_obligatorios) ... ok
+test_crear_juego (tests.test_models.JuegoModelTest.test_crear_juego) ... ok
+test_eliminar_inexistente_no_falla (tests.test_models.JuegoModelTest.test_eliminar_inexistente_no_falla) ... ok
+test_eliminar_juego (tests.test_models.JuegoModelTest.test_eliminar_juego) ... ok
+test_obtener_juegos (tests.test_models.JuegoModelTest.test_obtener_juegos) ... ok
+test_obtener_por_id (tests.test_models.JuegoModelTest.test_obtener_por_id) ... ok
+test_repr (tests.test_models.JuegoModelTest.test_repr) ... ok
+test_hash_no_guarda_texto_plano (tests.test_models.UserModelTest.test_hash_no_guarda_texto_plano) ... ok
+test_mismo_password_distinto_hash (tests.test_models.UserModelTest.test_mismo_password_distinto_hash) ... ok
+test_password_es_solo_escritura (tests.test_models.UserModelTest.test_password_es_solo_escritura) ... ok
+test_repr (tests.test_models.UserModelTest.test_repr) ... ok
+test_user_loader (tests.test_models.UserModelTest.test_user_loader) ... ok
+test_username_obligatorio (tests.test_models.UserModelTest.test_username_obligatorio) ... ok
+test_username_unico (tests.test_models.UserModelTest.test_username_unico) ... ok
+test_verify_password (tests.test_models.UserModelTest.test_verify_password) ... ok
+test_autenticado_redirige_desde_login_y_registro (tests.test_routes.AuthTest.test_autenticado_redirige_desde_login_y_registro) ... ok
+test_destino_seguro (tests.test_routes.AuthTest.test_destino_seguro) ... ok
+test_login_bloquea_open_redirect (tests.test_routes.AuthTest.test_login_bloquea_open_redirect) ... ok
+test_login_correcto (tests.test_routes.AuthTest.test_login_correcto) ... ok
+test_login_password_incorrecto (tests.test_routes.AuthTest.test_login_password_incorrecto) ... ok
+test_login_respeta_next_interno (tests.test_routes.AuthTest.test_login_respeta_next_interno) ... ok
+test_login_usuario_inexistente (tests.test_routes.AuthTest.test_login_usuario_inexistente) ... ok
+test_logout (tests.test_routes.AuthTest.test_logout) ... ok
+test_pagina_login_y_registro (tests.test_routes.AuthTest.test_pagina_login_y_registro) ... ok
+test_registro_exitoso (tests.test_routes.AuthTest.test_registro_exitoso) ... ok
+test_registro_password_corto (tests.test_routes.AuthTest.test_registro_password_corto) ... ok
+test_registro_passwords_distintos (tests.test_routes.AuthTest.test_registro_passwords_distintos) ... ok
+test_registro_usuario_duplicado (tests.test_routes.AuthTest.test_registro_usuario_duplicado) ... ok
+test_agregar_datos_invalidos (tests.test_routes.CrudJuegosTest.test_agregar_datos_invalidos) ... ok
+test_agregar_juego (tests.test_routes.CrudJuegosTest.test_agregar_juego) ... ok
+test_editar_datos_invalidos (tests.test_routes.CrudJuegosTest.test_editar_datos_invalidos) ... ok
+test_editar_form (tests.test_routes.CrudJuegosTest.test_editar_form) ... ok
+test_editar_inexistente_404 (tests.test_routes.CrudJuegosTest.test_editar_inexistente_404) ... ok
+test_editar_juego (tests.test_routes.CrudJuegosTest.test_editar_juego) ... ok
+test_eliminar_inexistente_404 (tests.test_routes.CrudJuegosTest.test_eliminar_inexistente_404) ... ok
+test_eliminar_juego (tests.test_routes.CrudJuegosTest.test_eliminar_juego) ... ok
+test_eliminar_solo_post (tests.test_routes.CrudJuegosTest.test_eliminar_solo_post) ... ok
+test_form_agregar (tests.test_routes.CrudJuegosTest.test_form_agregar) ... ok
+test_listado_vacio_y_con_datos (tests.test_routes.CrudJuegosTest.test_listado_vacio_y_con_datos) ... ok
+test_login_conserva_next (tests.test_routes.RutasProtegidasTest.test_login_conserva_next) ... ok
+test_no_crea_juego_sin_sesion (tests.test_routes.RutasProtegidasTest.test_no_crea_juego_sin_sesion) ... ok
+test_rutas_redirigen_a_login_sin_sesion (tests.test_routes.RutasProtegidasTest.test_rutas_redirigen_a_login_sin_sesion) ... ok
+
+----------------------------------------------------------------------
+Ran 61 tests in 4.475s
+
+OK

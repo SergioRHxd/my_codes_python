@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ game.title }}{% endblock %}
+{% block content %}
+<h1>{{ game.title }}</h1>
+<p><strong>Género:</strong> {{ game.genre }}</p>
+<p><strong>Año:</strong> {{ game.year }}</p>
+<p><strong>Plataforma:</strong> {{ plataforma }}</p>
+<a class="btn" href="{{ url_for('index') }}">Volver al catálogo</a>
+{% endblock %}

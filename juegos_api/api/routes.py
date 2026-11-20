@@ -32,7 +32,7 @@ juego_fields = {
     'precio': fields.Float,
 }
 
-PRECIO_MAX = Decimal('9999999.99')  # límite de Numeric(9, 2)
+PRECIO_MAX = Decimal('9999.99')  # límite de Numeric(5, 2)
 
 
 def leer_datos_juego():

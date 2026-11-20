@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}405 - Método no permitido{% endblock %}
+{% block content %}
+<p class="error-code">405</p>
+<h1>Método no permitido</h1>
+<p>Esta ruta no acepta el método HTTP utilizado en la solicitud.</p>
+<a class="btn" href="{{ url_for('index') }}">Volver al inicio</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Pruebas{% endblock %}
+{% block content %}
+<h1>Pruebas de manejo de errores</h1>
+<p>Usa estos enlaces para provocar cada error y tomar las capturas.</p>
+<ul>
+  <li><a href="/videogame/1">400</a> — /videogame/1 sin el parámetro <code>plataforma</code> (abort(400))</li>
+  <li><a href="/ruta-inexistente">404</a> — ruta que no existe</li>
+  <li>
+    405 — método no permitido (POST a una ruta que solo acepta GET):
+    <form action="/videogame/1" method="post" style="display:inline">
+      <button class="btn" type="submit">Enviar POST</button>
+    </form>
+  </li>
+  <li><a href="/error-500">500</a> — excepción no controlada (1/0)</li>
+  <li><a href="/api/videogame/99?plataforma=PC">API 404 (JSON)</a></li>
+  <li><a href="/api/videogame/1">API 400 (JSON)</a></li>
+  <li><a href="/api/error">API 500 (JSON)</a></li>
+</ul>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}400 - Solicitud incorrecta{% endblock %}
+{% block content %}
+<p class="error-code">400</p>
+<h1>Solicitud incorrecta</h1>
+<p>La solicitud no pudo procesarse porque faltan datos o son inválidos.</p>
+{% if error and error.description %}<p><em>{{ error.description }}</em></p>{% endif %}
+<a class="btn" href="{{ url_for('index') }}">Volver al inicio</a>
+{% endblock %}
